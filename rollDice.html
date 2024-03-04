@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dice Roll Simulator</title>
+        <link rel="stylesheet" href="./styles.css" />
+        
+    </head>
+    <body>
+        <h1>Dice Roll Simulator</h1>
+        <div id="Dice1" class="Dice">
+            <div class="dote"></div>
+        </div>
+        <div id="Dice2" class="Dice">
+            <div class="dote"></div>
+            <div class="dote"></div>
+        </div>
+        <div id="Dice3" class="Dice">
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+        </div>
+        <div id="Dice4" class="Dice">
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+        </div>
+        <div id="Dice5" class="Dice">
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+        </div>
+        <div id="Dice6" class="Dice">
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+            <div class="dote"></div>
+        </div>
+        
+        <button id="RollButton">Roll Dice</button>
+    <!--
+        <div class="result">
+            <h3>Roll <span>1</span>:</h3>
+            <div id="Dice1" class="Dice small">
+                <div class="dote"></div>
+            </div>
+        </div>
+    -->
+        <script>
+            const btn = document.getElementById('RollButton');
+
+            const dices = [
+                null, // Placeholder for index 0
+                document.getElementById('Dice1'),
+                document.getElementById('Dice2'),
+                document.getElementById('Dice3'),
+                document.getElementById('Dice4'),
+                document.getElementById('Dice5'),
+                document.getElementById('Dice6')
+                ];
+            
+            let nbRolls = 0;
+            
+            btn.addEventListener('click', function() {
+                // Disable the button to prevent multiple clicks during the animation
+                btn.disabled = true;
+            
+                // Start the animation
+                animateDice();
+            
+                // After a set duration, finalize the animation and show the result
+                setTimeout(function() {
+                    finalizeDice();
+                    btn.disabled = false; // Re-enable the button
+                }, 2000); // Adjust the duration as needed
+            });
+            
+            function animateDice() {
+                let interval = setInterval(function() {
+                    const randomVisibleDice = Math.floor(Math.random() * 6) + 1;
+                    showOnlyDice(randomVisibleDice);
+                }, 100); // Adjust the interval time as needed
+            
+                // After a set duration, clear the interval to stop animation
+                setTimeout(function() {
+                    clearInterval(interval);
+                }, 2000); // Adjust the duration as needed
+            }
+            
+            function showOnlyDice(diceNumber) {
+                for (let i = 1; i <= 6; i++) {
+                    dices[i].style.display = i === diceNumber ? 'block' : 'none';
+                }
+            }
+            
+            function finalizeDice() {
+                const randomNumber = Math.floor(Math.random() * 6) + 1;
+                nbRolls += 1;
+            
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('result'); // Add the class name
+            
+                // Creating the h3 element;
+                const textElement = document.createElement('h3');
+                textElement.innerText = "Roll " + nbRolls + ":";
+                newDiv.appendChild(textElement);
+            
+                // Show the corresponding dice image
+                showOnlyDice(randomNumber);
+            
+                // Clone the corresponding dice and append it
+                const smallDice = dices[randomNumber].cloneNode(true);
+                smallDice.style.display = 'block'; // Ensure it's visible
+                smallDice.classList.add('small');
+                newDiv.appendChild(smallDice);
+            
+                // Append the new div to the body
+                document.body.appendChild(newDiv);
+            }
+
+            
+        </script>
+    </body>
+</html>

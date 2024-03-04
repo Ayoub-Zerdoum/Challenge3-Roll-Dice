@@ -1,0 +1,105 @@
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    margin:10px auto 50px auto;
+    font-size: 40px;
+}
+
+button{
+    background-color: cadetblue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+button:hover{
+    background-color: rgb(115, 98, 211);
+}
+
+.Dice{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 6px solid black;
+    margin-bottom: 30px;
+}
+
+.dote{
+    position:absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+}
+/*
+#Dice6{
+    display: none;
+}
+*/
+/* styling the dices dice */
+#Dice1 > .dote,#Dice3 :nth-child(2),#Dice5 :nth-child(5){
+    top: 20px;
+    left: 20px;
+}
+
+#Dice2 :nth-child(1),#Dice3 :nth-child(1),#Dice4 :nth-child(1),#Dice5 :nth-child(1),#Dice6 :nth-child(1){
+    top: 5px;
+    left: 5px;
+}
+
+#Dice2 :nth-child(2),#Dice3 :nth-child(3),#Dice4 :nth-child(4),#Dice5 :nth-child(4),#Dice6 :nth-child(6){
+    top: 35px;
+    left: 35px;
+}
+
+#Dice4 :nth-child(2),#Dice5 :nth-child(2),#Dice6 :nth-child(2){
+    top: 5px;
+    left: 35px;
+}
+
+#Dice4 :nth-child(3),#Dice5 :nth-child(3),#Dice6 :nth-child(5){
+    top: 35px;
+    left: 5px;
+}
+
+#Dice6 :nth-child(3){
+    top: 20px;
+    left: 5px;
+}
+
+#Dice6 :nth-child(4){
+    top: 20px;
+    left: 35px;
+}
+
+#Dice2,#Dice3,#Dice4,#Dice5,#Dice6{
+    display: none;
+}
+
+.result{
+    display: flex;
+    height: 60px;
+    width: 500px;
+    background-color: lightgrey;
+    padding-left: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small{
+    margin-bottom: 0;
+    transform: scale(0.5);
+}
